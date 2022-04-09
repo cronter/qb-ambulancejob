@@ -844,14 +844,16 @@ RegisterNetEvent('qb-ambulancejob:checkin', function()
     if doctorCount >= Config.MinimalDoctors then
         TriggerServerEvent("hospital:server:SendDoctorAlert")
     else
-        TriggerEvent('animations:client:EmoteCommandStart', {"notepad"})
+        --TriggerEvent('animations:client:EmoteCommandStart', {"notepad"})
+        ExecuteCommand('e notepad2')
         QBCore.Functions.Progressbar("hospital_checkin", Lang:t('progress.checking_in'), 2000, false, true, {
             disableMovement = true,
             disableCarMovement = true,
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function() -- Done
-            TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+            --TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+            ExecuteCommand('e c')
             local bedId = GetAvailableBed()
             if bedId then
                 TriggerServerEvent("hospital:server:SendToBed", bedId, true)

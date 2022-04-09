@@ -133,7 +133,7 @@ Config.Items = {
     }
 }
 
-Config.BillCost = 2000
+Config.BillCost = 20
 Config.DeathTime = 300
 Config.CheckTime = 10
 

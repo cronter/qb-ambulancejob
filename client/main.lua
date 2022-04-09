@@ -850,14 +850,16 @@ CreateThread(function()
                         if doctorCount >= Config.MinimalDoctors then
                             TriggerServerEvent("hospital:server:SendDoctorAlert")
                         else
-                            TriggerEvent('animations:client:EmoteCommandStart', {"notepad"})
+							ExecuteCommand('e notepad2')
+                            --TriggerEvent('animations:client:EmoteCommandStart', {"notepad"})
                             QBCore.Functions.Progressbar("hospital_checkin", Lang:t('progress.checking_in'), 2000, false, true, {
                                 disableMovement = true,
                                 disableCarMovement = true,
                                 disableMouse = false,
                                 disableCombat = true,
                             }, {}, {}, {}, function() -- Done
-                                TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+								ExecuteCommand('e c')
+                                --ExecuteCommand('e c')
                                 local bedId = GetAvailableBed()
                                 if bedId then
                                     TriggerServerEvent("hospital:server:SendToBed", bedId, true)
@@ -865,7 +867,8 @@ CreateThread(function()
                                     QBCore.Functions.Notify(Lang:t('error.beds_taken'), "error")
                                 end
                             end, function() -- Cancel
-                                TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+								ExecuteCommand('e c')
+                                --ExecuteCommand('e c')
                                 QBCore.Functions.Notify(Lang:t('error.canceled'), "error")
                             end)
                         end
